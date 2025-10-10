@@ -1,5 +1,5 @@
 :root {
-  --background: #ffffff;
+  --background: #f4f4f4;
   --foreground: #171717;
 }
 
@@ -8,6 +8,38 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+/* allow manual override via data-theme attribute on <html> */
+html[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+html[data-theme="light"] {
+  --background: #f4f4f4;
+  --foreground: #171717;
+}
+
+/* MUI input styles for dark theme to ensure visibility */
+html[data-theme="dark"] .MuiOutlinedInput-root,
+html[data-theme="dark"] .MuiInputBase-root {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+html[data-theme="dark"]
+  .MuiOutlinedInput-root
+  .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-theme="dark"] .MuiInputBase-input,
+html[data-theme="dark"] .MuiSelect-select {
+  color: var(--foreground) !important;
+}
+
+html[data-theme="dark"] .MuiInputLabel-root {
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 html,
@@ -39,4 +71,46 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+/* custom scrollbar for article summaries */
+.article-summary-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.article-summary-scroll::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 8px;
+}
+.article-summary-scroll::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 8px;
+}
+
+/* Firefox */
+.article-summary-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #d0d0d0 #ffffff;
+}
+
+/* page container utility to provide responsive padding and top spacing */
+.page-container {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+.page-inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
